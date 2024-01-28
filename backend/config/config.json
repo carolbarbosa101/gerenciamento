@@ -1,0 +1,27 @@
+{
+  "development": {
+    "username": "gerente",
+    "password": "1991",
+    "database": "gerenciamento_clientes",
+    "host": "localhost",
+    "dialect": "postgresql",
+    "define": {
+      "timestamps": true, 
+      "underscored": true
+    }
+  },
+  "test": {
+    "username": "gerente",
+    "password": "1991",
+    "database": "gerenciamento_clientes_test",
+    "host": "localhost",
+    "dialect": "postgresql"
+  },
+  "production": {
+    "username": "gerente",
+    "password": "1991",
+    "database": "gerenciamento_clientes_production",
+    "host": "localhost",
+    "dialect": "postgresql"
+  }
+}
