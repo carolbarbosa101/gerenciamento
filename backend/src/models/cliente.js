@@ -1,5 +1,6 @@
 const { Sequelize, DataTypes, Model } = require('sequelize');
 
+
 const sequelize = new Sequelize({
   dialect: 'postgresql',
   host: 'localhost',
@@ -39,4 +40,4 @@ sequelize,
 modelName: 'Cliente',
 });
 
-module.exports = {Cliente, sequelize};
+module.exports = { Cliente, sequelize };

@@ -1,8 +1,9 @@
-const { Cliente } = require('../../models/cliente');
+const { Cliente } = require('../models/cliente');
+const { rotaService } = require('../../src/services/rotaService');
 
 module.exports = {
   async store(req, res) {
-    console.log(req.body); //debug
+   // console.log(req.body); //debug
     const { nome, telefone, email, enderecoX, enderecoY } = req.body;
     try {
       const cliente = await Cliente.create({ nome, telefone, email, enderecoX, enderecoY });
@@ -33,7 +34,7 @@ module.exports = {
       res.json(cliente);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: 'Desculpe, houve um erro e não foi possível buscar o cliente.' });
+      res.status(500).json({ error: 'Não foi possível buscar o cliente.' });
     }
   },
 
@@ -45,11 +46,12 @@ module.exports = {
       if (!cliente) {
         return res.status(404).json({ error: 'Cliente não encontrado.' });
       }
+      console.log('Dados recebidos para atualização:', req.body);//debug
       await cliente.update({ nome, telefone, email, enderecoX, enderecoY });
       res.json(cliente);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: 'Desculpe, houve um erro e não foi possível atualizar o cliente.' });
+      res.status(500).json({ error: 'Não foi possível atualizar o cliente.' });
     }
   },
 
@@ -68,8 +70,22 @@ module.exports = {
     }
   },
 
+
+  //otimizar rotas de atendimento
   async otimizarRotas(req, res) {
-    // Implementação para otimizar rotas de atendimento
-    // Lógica para calcular a rota otimizada e retornar a ordem de visitação dos clientes
+    try {
+      const clientes = await Cliente.findAll({ raw: true });
+
+      if (clientes.length === 0) {
+        return res.status(404).json({ error: 'Nenhum cliente encontrado' });
+      }
+
+      const ordemVisita = rotaService.otimizarRotas(clientes);
+
+      res.json({ ordemVisita });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Erro ao otimizar as rotas.' });
+    }
   },
 };

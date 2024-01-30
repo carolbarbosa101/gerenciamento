@@ -1,0 +1,24 @@
+{
+  "name": "permute",
+  "version": "1.0.0",
+  "description": "A tiny library to permutate a sequence.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bnoordhuis/node-permute"
+  },
+  "keywords": [
+    "permute",
+    "permutate",
+    "permutation"
+  ],
+	"author": {
+		"name": "Ben Noordhuis",
+		"email": "info@bnoordhuis.nl"
+	},
+  "license": "ISC",
+  "readmeFilename": "README"
+}

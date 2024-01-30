@@ -1,0 +1,30 @@
+PERMUTE
+=======
+
+A tiny library to permutate a sequence.
+
+
+USAGE
+=====
+
+var permute = require('permute');
+var seq = [2,3,5,7,11,13,17,19];
+while (permute(seq)) console.log(seq);  // Prints 40,319 permutations.
+
+
+PERFORMANCE
+===========
+
+Acceptable.  About 5.5 to 6 times slower than hand-crafted C++ code.
+
+
+KNOWN BUGS
+==========
+
+None.
+
+
+LICENSE
+=======
+
+ISC (BSD-like).  See the LICENSE file for details.
