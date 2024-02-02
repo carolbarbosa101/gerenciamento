@@ -1,5 +1,3 @@
-//const permute = require('permute');
-//const permutations = require('permutations');
 const { Cliente } = require('../../src/models/cliente');
 
 
@@ -28,8 +26,6 @@ function permute(array) {
   generate(array.length);
   return result;
 }
-
-
 
 
 // Função que calcula a distância entre dois clientes
