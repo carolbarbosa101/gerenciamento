@@ -15,10 +15,11 @@ router.delete('/clientes/:id', clienteController.destroy); // Remover um cliente
 
 // Rota para otimizar rotas de atendimento
 router.get('/api/otimizar-rotas', async (req, res) => {
-    try {
+  console.log('acessando rota de otimização');  
+  try {
       const clientes = await Cliente.findAll(); // ou qualquer método que você usa para obter a lista de clientes
       const ordemVisita = rotaService.otimizarRotas(clientes);
-      res.json(ordemVisita);
+      res.json({ordemVisita});
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: 'Erro ao otimizar as rotas.' });
