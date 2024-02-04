@@ -33,25 +33,27 @@ function calcularDistancia(cliente1, cliente2) {
   // Usando o teorema de Pitágoras
   const distanciaX = Math.abs(cliente1.enderecoX - cliente2.enderecoX);
   const distanciaY = Math.abs(cliente1.enderecoY - cliente2.enderecoY);
-  // Math.sqrt traz a raiz quadrada dos números
+  // traz a raiz quadrada dos números
   return Math.sqrt(distanciaX ** 2 + distanciaY ** 2);
 }
 
-// Função que calcula a distância total percorrida ao visitar os clientes na ordem dada
+// Função que calcula a distância total percorrida
 function calcularDistanciaTotal(ordemClientes) {
   let distanciaTotal = 0;
   for (let i = 0; i < ordemClientes.length - 1; i++) {
     distanciaTotal += calcularDistancia(ordemClientes[i], ordemClientes[i + 1]);
   }
+  //distancia de volta a loja
+  distanciaTotal += calcularDistancia(ordemClientes[ordemClientes.length - 1], {enderecoX: 0, enderecoY: 0});
   return distanciaTotal;
 }
 
-// Função principal para otimizar as rotas
+// Função p otimizar as rotas
 function otimizarRotas(clientes) {
-  // Gera todas as permutações possíveis dos clientes
+  // Gera todas as permutações possíveis
   const todasPermutacoes = permute([...clientes]);
 
-  // A melhor ordem e a menor distância com valores iniciais
+  // A melhor ordem e a menor distância
   let melhorOrdem = null;
   let menorDistancia = Infinity;
 
